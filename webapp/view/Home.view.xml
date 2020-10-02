@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.esr.itemstorageESR.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<Table 
+							id="itemTable"
+							items="{
+								path: 'items>/products',
+								sorter: {
+									path: 'productName'
+								}
+							}"
+							class="sapUiSmallMarginTop">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="{i18n>table.header}" />
+										<ToolbarSpacer />
+										<Button text="{i18n>table.hbCreate}" type="Accept" press="onAddItem" class="sapUiTinyMargin" />
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="{i18n>table.pID}" />
+								</Column>
+								<Column>
+									<Text text="{i18n>table.pName}" />
+								</Column>
+								<Column>
+									<Text text="{i18n>table.pPrice}" />
+								</Column>
+								<Column>
+									<Text text="{i18n>table.pStock}" />
+								</Column>
+								<Column width="3rem">
+									<Text text="" />
+								</Column>
+								<Column width="3rem">
+									<Text text="" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{items>productId}" />
+										<Input value="{items>productName}" editable="false" />
+										<Input value="{items>price}" editable="false" />
+										<Input value="{items>stock}" editable="false" />
+										<Button icon="sap-icon://edit" press="onEdit" tooltip="{i18n>table.bEdit}" />
+										<Button icon="sap-icon://save" press="onSave" tooltip="{i18n>table.bSave}" visible="false" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
